@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Implement MongoDB 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <?php echo $this->getContent(); ?>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $("#addMeta").click(function () {
+        var clone = $("#meta .meta-row").last().clone(true);
+        clone.val("");
+        clone.appendTo($("#meta-rows"));
+    });
+
+    $("#removeMeta").click(function () {
+        $(this).parent().remove();
+    });
+    
+    $("#addVariation").click(function () {
+        var clone = $("#variation .variation-row").last().clone(true);
+        clone.val("");
+        clone.appendTo($("#variation-rows"));
+    });
+
+    $("#removeVariation").click(function () {
+        $(this).parent().remove();
+    });
+    
+</script>
+</html>

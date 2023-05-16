@@ -1,0 +1,49 @@
+<?php echo $this->tag->form('/product/update?id='.$_GET['id']) ?>
+<h2>Add Product</h2>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="inputEmail4">Name</label>
+        <input type="text" class="form-control" name='name' value = <?php echo $message['name']?>>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPassword4">Category</label>
+        <input type="text" class="form-control" name='category' value = <?php echo $message['category']?>>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="inputEmail4">Price</label>
+        <input type="number" class="form-control" name='price' value = <?php echo $message['price']?>>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputPassword4">Stock</label>
+        <input type="number" class="form-control" name='stock' value = <?php echo $message['stock']?>>
+    </div>
+</div>
+<div id = 'meta' >
+    Meta Details
+    <div id="meta-rows" class = 'm-1'>
+        <div class="meta-row">
+            <input type="text" placeholder="key" name = 'meta_key' value = <?php echo $message['meta_key']?>>
+            <input type="text" placeholder="value" name = 'meta_value' value = <?php echo $message['meta_value']?>>
+            <input type="button" id="addMeta" value="+">
+            <input type="button" id="removeMeta" value="-">
+        </div>
+    </div>
+</div>
+<div id = 'variation'>
+    Other Variations
+    <div id="variation-rows" class = 'm-1'>
+        <div class="variation-row">
+            <input type="text" placeholder="key"name = "variation_key"
+            value = <?php echo $message['variation_key']?>>
+            <input type="text" placeholder="value" name = 'variation_value'
+            value = <?php echo $message['variation_value']?>>
+            <input type="button" id="addVariation" value="+">
+            <input type="button" id="removeVariation" value="-">
+        </div>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Update</button>
+</form>
