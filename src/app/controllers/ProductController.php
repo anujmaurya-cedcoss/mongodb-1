@@ -10,37 +10,30 @@ class ProductController extends Controller
 
     public function addAction()
     {
-        // echo "<pre>";
-        // print_r($_POST); 
-        $name = $this->request->getPost('name');
-        $category = $this->request->getPost('category');
-
         $n = count($this->request->getPost('meta_key'));
-        $key = [];
-        $value = [];
-        for ($i=0; $i < $n; $i++) {
-            // array_push($key, $_POST['meta_key'][$i]);
-            // array_push($value, $_POST['meta_value'][$i]);
-            $key[] = $_POST['meta_key'][$i];
-            $value[] = $_POST['meta_value'][$i];
+        $meta = [];
+        for ($i = 0; $i < $n; $i++) {
+            $key = $_POST['meta_key'][$i];
+            $value = $_POST['meta_value'][$i];
+            $meta[$key] = $value;
         }
-        echo "<pre>";
-        print_r(array_values($key));
-        print_r($value);
-        $meta = array_combine($key, $value);
         $m = count($this->request->getPost('variation_key'));
         $variation = [];
-        for ($i=0; $i < $m; $i++) {
-            array_push($variation, [$this->request->getPost('variation_key')[$i] => $this->request->getPost('variation_value')[$i]]);
+        for ($i = 0; $i < $m; $i++) {
+            $key = $_POST['variation_key'][$i];
+            $value = $_POST['variation_value'][$i];
+            $variation[$key] = $value;
         }
-
-        echo "<pre>";
-        print_r(array_values($meta));
-        print_r(array_values($variation));
-        die;
-        
+        $arr = [
+            "name" => $_POST['name'],
+            "category" => $_POST['category'],
+            "price" => $_POST['price'],
+            "stock" => $_POST['stock'],
+            "meta" => $meta,
+            "attributes" => $variation
+        ];
         $collection = $this->mongo->product;
-        $collection->insertOne($this->request->getPost());
+        $collection->insertOne($arr);
         $this->response->redirect('/product/show');
     }
 
@@ -80,5 +73,13 @@ class ProductController extends Controller
         $collection = $this->mongo->product;
         $collection->deleteOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
         $this->response->redirect('/product/show');
+    }
+
+    public function quickViewAction() {
+        $id = $_GET['id'];
+        $collection = $this->mongo->product;
+        $data = $collection->findOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
+        echo "<pre>";
+        print_r($data); die;        
     }
 }

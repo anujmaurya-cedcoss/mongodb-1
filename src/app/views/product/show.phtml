@@ -8,12 +8,15 @@
     <?php
     foreach ($message as $key => $value) {
         echo "<div class=\"card m-2 col-3 bg-light\">
+        <h5 class=\"card-title card-header mb-3\"><strong>Name</strong>: $value[name]</h5>
     <div class=\"card-body\">
-    <h5 class=\"card-title card-header mb-3\"><strong>Name</strong>: $value[name]</h5>
     <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Category</strong>: $value[category]</h6>
     <p class=\"card-text\"><strong>Price :</strong>$$value[price]</p>
-    <a href=\"/product/edit?id=$value[_id]\" class=\"card-link card-footer mt-3\">Edit</a>
-    <a href=\"/product/delete?id=$value[_id]\" class=\"card-link card-footer\">Delete</a>
+    </div>
+    <div class = 'row'>
+    <a href=\"/product/edit?id=$value[_id]\" class=\"btn btn-primary m-1 \">Edit</a>
+    <a href=\"/product/delete?id=$value[_id]\" class=\"btn btn-primary m-1 \">Delete</a>
+    <a href=\"/product/quickView?id=$value[_id]\" class=\"btn btn-primary m-1 \">Quick View</a>
     </div>
     </div>";
     }
