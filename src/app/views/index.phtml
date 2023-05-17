@@ -23,7 +23,7 @@
     $("#removeMeta").click(function () {
         $(this).parent().remove();
     });
-    
+
     $("#addVariation").click(function () {
         var clone = $("#variation .variation-row").last().clone(true);
         clone.val("");
@@ -33,6 +33,19 @@
     $("#removeVariation").click(function () {
         $(this).parent().remove();
     });
-    
+
+    $("#select_product").on("change", function () {
+        product = $("#select_product").val();
+        console.log(product);
+        $.ajax({
+            type: "post",
+            url: "generateDropdown",
+            data: { "id": product },
+            dataType: 'text',
+            success: function (res) {
+            }
+        })
+    });
 </script>
+
 </html>

@@ -79,7 +79,6 @@ class ProductController extends Controller
         $id = $_GET['id'];
         $collection = $this->mongo->product;
         $data = $collection->findOne(["_id" => new MongoDB\BSON\ObjectId($id)]);
-        echo "<pre>";
-        print_r($data); die;        
+        $this->view->message = $data;
     }
 }

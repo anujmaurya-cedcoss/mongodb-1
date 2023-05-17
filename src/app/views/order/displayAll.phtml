@@ -1,0 +1,50 @@
+<?php echo $this->tag->form('/order/displayAll') ?>
+<div class="row bg-info">
+    <div class='col mt-3'>
+        <label class='mt-1' for="order_status">Choose Status:</label>
+        <select class='' name="order_status" id="order_status">
+            <option value="paid">paid</option>
+            <option value="processing">processing</option>
+            <option value="dispatched">dispatched</option>
+            <option value="shipped">shipped</option>
+            <option value="refunded">refunded</option>
+        </select>
+    </div>
+
+    <div class='col mt-3'>
+        <label class='mt-2' for="date_range">Choose Date:</label>
+        <select class='' name="date_range" id="date_range">
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+            <option value="custom">Custom</option>
+        </select>
+    </div>
+    <div class="col m-3">
+        <input name='start_date' type="text" class="form-control" placeholder="Start Date">
+    </div>
+    <div class="col m-3">
+        <input type="text" name='end_date' class="form-control" placeholder="End Date">
+    </div>
+    <button type="submit" class="btn btn-success rounded p-0" name='findOrders'>Find Orders</button>
+</div>
+</form>
+<h1>List of all Orders</h1>
+<div class='row'>
+    <?php
+    foreach ($message as $key => $value) {
+        echo "<div class=\"card m-2 col-5 bg-light\">
+        <h5 class=\"card-title card-header mb-3\"><strong>Customer Name</strong>: $value[uname]</h5>
+    <div class=\"card-body\">
+    <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Quantity</strong>: $value[quantity]</h6>
+    <p class=\"card-text\"><strong>Product id :</strong>$value[productId]</p>
+    <p class=\"card-text\"><strong>Order Status :</strong>$value[status]</p>
+    <p class=\"card-text\"><strong>Order Date :</strong>$value[date]</p>
+    </div>
+    <div class = 'row'>
+    <a href=\"/order/edit?id=$value[_id]\" class=\"btn btn-primary m-1 \">Update Order</a>
+    </div>
+    </div>";
+    }
+    ?>
+</div>

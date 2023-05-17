@@ -1,0 +1,26 @@
+<h3>Quick View</h3>
+<div class='row'>
+    <?php
+    echo "<div class=\"card m-2 col-12 bg-light\">
+        <h5 class=\"card-title card-header mb-3\"><strong>Name</strong>: $message[name]</h5>
+    <div class=\"card-body\">
+    <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Category</strong>: $message[category]</h6>
+    <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Product ID:</strong>: $message[_id]</h6>
+    <p class=\"card-text\"><strong>Price :</strong>$$message[price]</p>
+    <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Stock</strong>: $message[stock]</h6>
+    <h6 class=\"card-subtitle mb-2 text-muted\"><strong>Meta Data</strong>:<br>";
+    foreach ($message['meta'] as $key => $value) {
+        echo "<p>$key => $value</p>";
+    }
+    echo "<h6 class=\"card-subtitle mb-2 text-muted\"><strong>Variations Attributes</strong>:<br>";
+    foreach ($message['attributes'] as $key => $value) {
+        echo "<p>$key => $value</p>";
+    }
+    echo "</div>
+    <div class = 'row'>
+    <a href=\"/product/edit?id=$message[_id]\" class=\"btn btn-primary m-1 \">Edit</a>
+    <a href=\"/product/delete?id=$message[_id]\" class=\"btn btn-primary m-1 \">Delete</a>
+    </div>
+    </div>";
+    ?>
+</div>

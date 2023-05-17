@@ -1,0 +1,43 @@
+<h1>Update Order</h1>
+<label for="select_product">Purchased Product</label>
+<select name="select_product" disabled>
+    <option>
+        <?php echo $message['productId'] ?>
+    </option>
+</select>
+<?php echo $this->tag->form('/order/update?id='.$message['_id']) ?>
+<div class="form-group">
+    <label for="select_variation">Selected Variation</label>
+    <select name="select_variation" id="select_variation" disabled>
+        <option value="">
+            <?php
+            echo $message['variation']
+                ?>
+        </option>
+    </select>
+    <hr>
+
+    <label for="uname">Customer Name</label>
+    <input type="text" class="form-control" name="uname" value=<?php echo $message['uname'] ?> disabled>
+</div>
+<div class="form-group">
+    <label for="quantity">Order Quantity</label>
+    <input type="number" class="form-control" name="quantity" value=<?php echo $message['quantity'] ?> disabled>
+</div>
+<div class="form-group">
+    <label for="quantity">Order Date</label>
+    <input type="text" class="form-control" name="quantity" value=<?php echo $message['date'] ?> disabled>
+</div>
+<div class="form-group">
+    <label for="order_status">Set Status:</label>
+    <select class='' name="order_status" id="order_status" value=<?php echo $message['order_status'] ?>>
+        <option value="paid">paid</option>
+        <option value="processing">processing</option>
+        <option value="dispatched">dispatched</option>
+        <option value="shipped">shipped</option>
+        <option value="refunded">refunded</option>
+    </select>
+</div>
+<button type="submit" class="btn btn-primary">Update Order</button>
+</div>
+</form>

@@ -1,0 +1,32 @@
+<?php session_start() ?>
+<h1>Place New Order</h1>
+
+<?php echo $this->tag->form('/order/add') ?>
+<label for="select_product">Select Product</label>
+<select name="select_product" id="select_product">
+    <?php
+    foreach ($message as $key => $value) {
+        echo "<option value='$key'>$value</option>";
+    }
+    ?>
+</select>
+<div class="form-group">
+
+    <hr>
+
+    <label for="select_variation">Select Variation</label>
+    <select name="select_variation" id="select_variation">
+        <?php echo $_SESSION['dropdown'] ?>
+    </select>
+    <hr>
+
+    <label for="uname">Enter Your Name</label>
+    <input type="text" class="form-control" name="uname" placeholder="Enter your name">
+</div>
+<div class="form-group">
+    <label for="quantity">Enter Quantity</label>
+    <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+</div>
+
+<button type="submit" class="btn btn-primary">Place Order</button>
+</form>
